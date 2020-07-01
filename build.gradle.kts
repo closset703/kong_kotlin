@@ -56,6 +56,7 @@ project(":api") {
 
     dependencies {
         implementation(project(":domain:accounts"))
+        implementation(project(":client:security-configuration"))
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
         providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
         implementation("org.springframework.boot:spring-boot-starter-security")
@@ -75,7 +76,6 @@ project(":domain:accounts") {
 
     dependencies {
         implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-        implementation("org.springframework.boot:spring-boot-starter-data-jpa")
         runtimeOnly("com.h2database:h2")
     }
 
@@ -83,6 +83,18 @@ project(":domain:accounts") {
     val jar: Jar by tasks
     val bootJar: BootJar by tasks
 
+    bootJar.enabled = false
+    jar.enabled = true
+}
+
+project(":client:security-configuration") {
+    apply(plugin = "kotlin-kapt")
+
+    dependencies {
+        implementation("org.springframework.boot:spring-boot-starter-security")
+    }
+    val jar: Jar by tasks
+    val bootJar: BootJar by tasks
     bootJar.enabled = false
     jar.enabled = true
 }
