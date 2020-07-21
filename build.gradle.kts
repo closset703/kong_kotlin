@@ -52,6 +52,7 @@ subprojects {
 
 
 project(":api") {
+    apply(plugin = "org.jetbrains.kotlin.plugin.jpa")
     apply(plugin = "war")
     apply(plugin = "kotlin-kapt")
 
@@ -76,7 +77,7 @@ project(":domain:accounts") {
     apply(plugin = "kotlin-kapt")
 
     dependencies {
-        implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+        api("org.springframework.boot:spring-boot-starter-data-jpa")
         runtimeOnly("com.h2database:h2")
     }
 
