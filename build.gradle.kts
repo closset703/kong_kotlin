@@ -35,6 +35,7 @@ subprojects {
         testImplementation("org.springframework.boot:spring-boot-starter-test") {
             exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
         }
+        testImplementation("org.assertj:assertj-core:3.11.1")
     }
 
     tasks.withType<Test> {
@@ -92,6 +93,7 @@ project(":client:security-configuration") {
 
     dependencies {
         implementation("org.springframework.boot:spring-boot-starter-security")
+        testImplementation("org.springframework.security:spring-security-test")
     }
     val jar: Jar by tasks
     val bootJar: BootJar by tasks
